@@ -1,0 +1,32 @@
+<div class="container"><div class="jumbotron"><p>
+  sample works! and email is {{email}}  <br />
+  Component in sample is :{{service}}
+</p>
+Please select to load dropdown:
+<input type="checkbox"  [(ngModel)]="checkBoxFlag" />
+<br />
+<div *ngIf="checkBoxFlag">
+<select (change)=submittedValue($event)>
+  <option *ngFor="let w of week">
+    {{w}}
+  </option>
+</select>
+</div>
+<div *ngIf="weekdayFlag">
+<select >
+  <option *ngFor="let w of weekdays">
+    {{w}}
+  </option>
+</select>
+</div>
+<div *ngIf="weekendFlag">
+<select >
+  <option *ngFor="let w of weekend">
+    {{w}}
+  </option>
+</select>
+</div>
+</div>
+</div>
+<button  (click)="submittedValue($event)">Submit</button>
+<button  (click)="cancelEvent($event)">Cancel</button>

@@ -1,20 +1,109 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!--<div class="container" style="text-align:center">
+  <div class="jumbotron">
   <h1>
-    Welcome to {{title}}!
+    <span changeText>Welcome to {{title|lowercase}}</span>
   </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+  <br />
+  <a routerLink="app-routing">Routing Component</a>
+  <b>square root of 25 is {{25|sqrt}}</b>  
+  Date is :{{today}}
+  Component in app is :{{service}}
+  </div>
+</div>-->
+<div>
+  <ul *ngFor="let data of users | paginate: { id: 'listing_pagination',
+                                                      itemsPerPage: 5,
+                                                      currentPage: page,
+                                                      totalItems: totalRec }">
+    <li>Name:{{data.name}} and Address:{{data.address.city}}</li>
+  </ul>
+</div> 
+<div>
+ <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+ </div>
+<router-outlet></router-outlet>
+<!--<form #userlogin="ngForm" (ngSubmit)="ClickedSubmit(userlogin.value)">
+
+  <input type="text" name="emailid" placeholder="emailid" ngModel >
+  <br />
+  <input type="password" name="passwd" placeholder="passwd" ngModel >
+  <br />
+  <input type="submit" value="submit" />
+</form>
+<label> Entered email id is:</label>{{emailid}}-->
+<!--<div>
+   <form [formGroup]="formdata" (ngSubmit) = "ClickedSubmit(formdata.value)" >
+      <input type="text" class="fortextbox" name="emailid" placeholder="emailid" 
+         formControlName="emailid">
+      <br/>
+      
+      <input type="password" class="fortextbox" name="passwd" 
+         placeholder="passwd" formControlName="passwd">
+      <br/>
+      
+      <input type="submit" class="forsubmit" [disabled]="!formdata.valid" value="Log In">
+   </form>
+</div>-->
+<p>
+   Email entered is : <app-sample [email]="emailid" (status)='saveStatus($event)' ></app-sample>
+</p>
+
+<input class="tooltiptext" tooltip content="any text here" id="editSection"/> 
+
+
+<br />
+<br />
+<div>
+  <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
+
+<p>Output emitted is :{{output}}
+  <button (click)="getuserslist()">getUsers</button>
+<div style="text-align:center">
+<h1>
+Click one of the two buttons
+</h1>
+<button (click)="method1Call()">Method 1</button>
+<button (click)="method2Call()">Method 1</button>
+</div>
+<!--<p style="font-size:30px;">On your template paste the html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.
+On your template paste the  html. This will add a simple button with default styles and without animated scroll. By default go-top-button will appear on the right side, 50% top and bottom and without any icons or text. You can then customize its styles and behaviour.</p>
+<p>Message is {{message}}</p>-->
+<div class='scrolltop'>
+    <div class='scroll icon' (click)="onEdit()"><i class="fa fa-4x fa-angle-up"></i></div>
+</div>
+    <span class="noti glyphicon glyphicon-bell"></span><span class="badge button__badge">16</span>
+
+
+                    <li class="dropdown" >
+                                          <a href="javascript:void(0)" ><span aria-hidden="true"></span>Notifications</a>
+                                    
+                                                                  
+                                 <!-- <a href="#home" style="font-style: normal; font-weight: bold; color: navy" *ngFor="let productName of products"><img src="assets/dist/img/QNXT.jpg" style="width: 60px; height: 60px" />{{productName}}</a> -->
+                                
+                                <div class="dropdown-content">
+                                                                         
+                                  
+                                    <li class="dropdown " >
+                                       
+                                       <a href="javascript:void(0)" class="dropbtn"><span aria-hidden="true"></span>Notifications<span class="noti glyphicon glyphicon-bell"></span><span class="badge button__badge">{{notificationCount}}</span></a>
+                                       <div class="dropdown-content" >
+                                       <a   style="font-style: normal; font-weight: italic; color: navy" (click)="reduceNotificationCount()" [routerLink]="['/notifications']"><p>{{messages}}</p></a>
+                                        <!--<hr style="border-top: dotted 1px;" />-->
+                                       <!-- <a  style="font-style: normal; font-weight: italic; color: navy">10.15 AM network</a>
+                                        <a  style="font-style: normal; font-weight: italic; color: navy">2.00 PM DB Check</a>-->
+                                   <a  style="font-style: normal; font-weight: bold; color: navy" (click)="reduceNotificationCount()" [routerLink]="['/notifications']"> View All </a>
+                                </div>
+                           </li>
+
+                           
 
